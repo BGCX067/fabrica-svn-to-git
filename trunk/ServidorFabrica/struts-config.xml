@@ -1,0 +1,176 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_0.dtd">
+<struts-config>
+
+  <!-- ========== Configuraciones de Data Source ============================== -->
+
+  <!-- ========== Definiciones de Form Bean =================================== -->
+  <form-beans type="org.apache.struts.action.ActionFormBean">
+     
+    <form-bean name="AltaArticuloForm" type="struts.forms.AltaArticuloForm" />
+    <form-bean name="OrdenReposicionForm" type="struts.forms.OrdenReposicionForm" />
+    <form-bean name="BusquedaOrdenesForm" type="struts.forms.BusquedaOrdenesForm"/>
+    <form-bean name="RecuperoForm" type="struts.forms.RecuperoForm"/>
+    <form-bean name="Recupero2Form" type="struts.forms.Recupero2Form"/>
+    <form-bean name="Recupero3Form" type="struts.forms.Recupero3Form"/>
+    <form-bean name="SincroForm" type="struts.forms.SincroForm"/>
+  </form-beans>
+
+  <!-- ========== Definiciones de Global Forward ============================== -->
+  <global-forwards type="org.apache.struts.action.ActionForward">
+    <forward name="Menu" path="/index.jsp" />
+  </global-forwards>
+
+
+  <!-- ========== Definiciones de Action Mapping ============================== -->
+  <action-mappings type="org.apache.struts.action.ActionMapping">
+
+    <!-- Alta Cliente -->
+    <action path="/AltaArticulo"
+     name="AltaArticuloForm" 
+     type="struts.actions.AltaArticuloAction"
+     validate="false" 
+     scope="request">
+    	    <forward name="showList" path="/AltaArticulo.jsp" />
+    	    <forward name="success" path="/AltaArticuloOK.jsp" />
+    	    <forward name="failure" path="/AltaArticuloError.jsp" />
+   </action>
+   <action path="/CargarDatos"
+    name="AltaArticuloForm"
+    type="struts.actions.CargarDatosAction"
+    validate="false"
+    scope="request">
+           <forward name="showList" path="/AltaArticulo.jsp"/>
+           <forward name="success" path="/AltaArticuloOK.jsp" />
+           <forward name="failure" path="/AltaArticuloError.jsp" />
+    </action>
+    <!-- input="altaCliente.jsp" -->
+    <!-- Orden de reposicion -->
+    <action
+    		path="/OrdenReposicion"
+    		name="OrdenReposicionForm"
+    		type="struts.actions.OrdenReposicionAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="ordensuccess" path="/OrdenReposicionOk.jsp"/>
+    		 <forward name="ordenfailure" path="/OrdenReposicionFail.jsp"/>
+    </action>
+    <action
+    		path="/CargarOrden"
+    		name="OrdenReposicionForm"
+    		type="struts.actions.CargarOrdenAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="cargarordensuccess" path="/OrdenReposicion.jsp"/>
+    		 <forward name="ordenfailure" path="/OrdenReposicionFail.jsp"/>
+    </action>
+     
+    
+    <!-- Primer Accion no tiene pantalla, cargar las ordenes al la collecion  -->
+   <action
+    		path="/CargarBuscarOrden"
+    		name="BusquedaOrdenesForm"
+    		type="struts.actions.CargarBusquedaOrdenesAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="busquedaordenessuccess" path="/BusquedaOrdenes.jsp"/>
+    		 <forward name="busquedaordenesfailure" path="/BusquedaOrdenesFail.jsp"/>
+    </action>
+    <!--  Paso a la primera pantalla, muestro las ordenes cargadas Presiono Enviar y
+    cargo la coleccion con los datos, luego ir a lo pantalla de fabricacion articulo que se
+    puede fabricar y que no-->
+     <action
+    		path="/BusquedaOrdenes"
+    		name="BusquedaOrdenesForm"
+    		type="struts.actions.BusquedaOrdenesAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="busquedaordenessuccess" path="/FabricacionCarga.do"/>
+    		 <forward name="busquedaordenesfailure" path="/BusquedaOrdenesFail.jsp"/>
+    </action>
+    
+    <action
+    		path="/FabricacionCarga"
+    		name="BusquedaOrdenesForm"
+    		type="struts.actions.CargarFabricarAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="articulofabricarsuccess" path="/ArticuloFabricar.jsp"/>
+    		 <forward name="articulofabricarfailure" path="/ArticuloFabricarFail.jsp"/>
+    </action>
+    
+      <action
+    		path="/ArticuloFabricar"
+    		name="BusquedaOrdenesForm"
+    		type="struts.actions.ArticuloFabricarAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="articulofabricarsuccess" path="/ArticuloFabricarOk.jsp"/>
+    		 <forward name="articulofabricarfailure" path="/ArticuloFabricarFail.jsp"/>
+    </action>
+    <!-- Parte de beto -->
+    <action
+    		path="/Recupero"
+    		name="RecuperoForm"
+    		type="struts.actions.CargarRecuperoAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="recuperosuccess" path="/PantallaRecupero.jsp"/>
+    		 <forward name="recuperofailure" path="/RecuperoFail.jsp"/>
+    </action>
+     <action
+    		path="/PantallaRecupero"
+    		name="RecuperoForm"
+    		type="struts.actions.GuardarRecuperoAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="recupero2success" path="/Recupero2.do"/>
+    		 <forward name="recupero2failure" path="/RecuperoFail.jsp"/>
+    </action>
+    <action
+    		path="/Recupero2"
+    		name="Recupero2Form"
+    		type="struts.actions.CargarRecupero2Action"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="recupero3success" path="/PantallaRecupero2.jsp"/>
+    		 <forward name="recupero3failure" path="/RecuperoFail.jsp"/>
+    </action>
+    <action
+    		path="/PantallaRecupero2"
+    		name="Recupero2Form"
+    		type="struts.actions.GuardarRecupero2Action"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="recupero4success" path="/Recupero3.do"/>
+    		 <forward name="recupero4failure" path="/RecuperoFail.jsp"/>
+    </action>
+    <action
+    		path="/Recupero3"
+    		name="Recupero3Form"
+    		type="struts.actions.CargarRecupero3Action"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="recupero5success" path="/PantallaRecupero3.jsp"/>
+    		 <forward name="recupero5failure" path="/RecuperoFail.jsp"/>
+    </action>
+     <action
+    		path="/PantallaRecupero3"
+    		name="Recupero3Form"
+    		type="struts.actions.GuardarRecupero3Action"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="recupero6success" path="/RecuperoOrdenOk.jsp"/>
+    		 <forward name="recupero6failure" path="/RecuperoFail.jsp"/>
+    </action>
+    
+    <action path="/Sincro"
+    		name="SincroForm"
+    		type="struts.actions.CargarSincroAction"
+    		 validate="false"
+    		 scope="request">
+    		 <forward name="success" path="/SincroOk.jsp"/>
+    		 <forward name="failure" path="/SincroFail.jsp"/>
+     </action>
+  </action-mappings>
+
+</struts-config>

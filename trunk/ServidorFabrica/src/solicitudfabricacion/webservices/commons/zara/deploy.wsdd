@@ -1,0 +1,25 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from RecibirSolicitudFabricacionService WSDL service -->
+
+  <service name="RecibirSolicitudFabricacion" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="urn:zara.commons.webservices.solicitudfabricacion"/>
+      <parameter name="wsdlServiceElement" value="RecibirSolicitudFabricacionService"/>
+      <parameter name="wsdlServicePort" value="RecibirSolicitudFabricacion"/>
+      <parameter name="className" value="solicitudfabricacion.webservices.commons.zara.RecibirSolicitudFabricacionSoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="RecibirSolicitudFabricacion"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <parameter name="allowedMethods" value="*"/>
+
+  </service>
+</deployment>

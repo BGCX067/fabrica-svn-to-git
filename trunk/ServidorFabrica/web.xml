@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<!-- Copyright (c) 2002 by ObjectLearn. All Rights Reserved. -->
+<!-- Web.xml for EjemploStruts -->
+
+<web-app>
+
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+		<!--clase base para internacionalizar -->
+		<init-param>
+		  <param-name>application</param-name>
+		  <param-value>/ejemploStruts.properties</param-value>
+		</init-param>
+
+		<!--path en donde se encuentra el archivo de configuracion de strut -->
+		<init-param>
+		  <param-name>config</param-name>
+		  <param-value>/struts-config.xml</param-value>
+		</init-param>
+
+		<!--nivel de detalle de debugging para este servlet -->
+		<init-param>
+		  <param-name>debug</param-name>
+		  <param-value>2</param-value>
+		</init-param>
+
+		<load-on-startup>2</load-on-startup>
+
+    </servlet>
+
+	<servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+
+</web-app>

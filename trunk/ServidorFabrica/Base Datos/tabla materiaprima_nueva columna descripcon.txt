@@ -1,0 +1,6 @@
+-- Column: descripcion
+
+-- ALTER TABLE materiaprima DROP COLUMN descripcion;
+
+ALTER TABLE materiaprima ADD COLUMN descripcion varchar;
+ALTER TABLE materiaprima ALTER COLUMN descripcion SET STORAGE EXTENDED;

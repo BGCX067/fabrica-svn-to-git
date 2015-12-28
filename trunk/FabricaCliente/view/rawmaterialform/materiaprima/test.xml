@@ -1,0 +1,14 @@
+<view.rawmaterialform.materiaprima.MateriaPrima-array>
+  <view.rawmaterialform.materiaprima.MateriaPrima>
+    <codigo>12312</codigo>
+    <cantidad>10</cantidad>
+  </view.rawmaterialform.materiaprima.MateriaPrima>
+  <view.rawmaterialform.materiaprima.MateriaPrima>
+    <codigo>A1223T</codigo>
+    <cantidad>5</cantidad>
+  </view.rawmaterialform.materiaprima.MateriaPrima>
+  <view.rawmaterialform.materiaprima.MateriaPrima>
+    <codigo>A7755X</codigo>
+    <cantidad>5</cantidad>
+  </view.rawmaterialform.materiaprima.MateriaPrima>
+</view.rawmaterialform.materiaprima.MateriaPrima-array>

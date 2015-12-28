@@ -1,0 +1,13 @@
+/* Create Tables */
+Create table "articulocentrodistribucion"
+(
+	"articuloid" Bigint NOT NULL,
+	"centrodistribucionid" Bigint NOT NULL,
+ primary key ("articuloid","centrodistribucionid")
+) With Oids;
+
+
+/* Create Foreign Keys */
+Alter table "articulocentrodistribucion" add  foreign key ("articuloid") references "articulo" ("articuloid") on update restrict on delete restrict;
+
+Alter table "articulocentrodistribucion" add  foreign key ("centrodistribucionid") references "centrodistribucion" ("centrodistribucionid") on update restrict on delete restrict;

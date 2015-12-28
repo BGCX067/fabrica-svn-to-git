@@ -1,0 +1,43 @@
+insert into ordenfabricacionestado
+       values (1,'Pendiente');
+insert into ordenfabricacionestado
+       values (2,'En ejecucion');
+insert into ordenfabricacionestado
+       values (3,'Terminada');
+       
+
+insert into ordenfabricacionejecucionestado
+       values (1, 'Pendiente');
+
+insert into ordenfabricacionejecucionestado
+       values (2, 'Ejecutado');
+       
+
+insert into ordencompraestado
+       values (1, 'Pendiente');
+insert into ordencompraestado
+       values (2, 'Recibida');
+       
+insert into ordencompraitemestado
+       values (1, 'Pendiente');
+insert into ordencompraitemestado
+       values (2, 'Recibido');
+
+
+/*solicitud fabricacion Estados */
+insert into solicitudfabricacionestado(id,nombre)
+values(1,'Pendiente');
+
+insert into solicitudfabricacionestado(id,nombre)
+values(2,'Terminada');
+
+/*Orden reposicion Estados */
+insert into ordenreposicionestado(id,nombre)
+values(1,'Pendiente');
+
+insert into ordenreposicionestado(id,nombre)
+values(2,'Parcialmente Repuesto');
+
+insert into ordenreposicionestado(id,nombre)
+values(3,'Repuesto');
+

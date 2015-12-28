@@ -1,0 +1,6 @@
+ALTER TABLE "public"."ordenfabricacion"
+  ADD COLUMN "cantidadfabricada" BIGINT;
+
+
+ALTER TABLE "public"."ordenfabricacion"
+  ALTER COLUMN "cantidadfabricada" SET DEFAULT 0;
